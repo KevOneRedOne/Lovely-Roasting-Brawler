@@ -1,2 +1,3 @@
 # Lovely-Roasting-Brawler
-Projet Python : un jeu de combat d'insultes drôle entre amis 
+Premier Projet en Python :
+  Lovely Roasting Brawler sera un jeu de combat d'insultes drôle entre amis
