@@ -1,22 +1,49 @@
 import random
+from listedemots import List1,List2,List3,List4,List5
 
-Sujet = ["Mon chien ","Votre mère ","Mes chaussettes ","Le président des Etats-Unis ","Le Maire "]
+print("Grille Principale :")
+def MainGridGenerator() :
+    Grille10Mots = []
+    i = 0
+    while i < 10:
+        Grille10Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        i += 1
+    print(Grille10Mots)
+MainGridGenerator()
 
-Verbe = ["Est parti ","A lavé ","était ","sont "]
+print("Grille Joueur 1 :")
+def J1GridGenerator() :
+    Grille2Mots = []
+    i = 0
+    while i < 2:
+        Grille2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        i += 1
+    print(Grille2Mots)
+J1GridGenerator()
 
-Complement = ["Ce soir ","à l'école ","La semaine dernière "]
+print("Grille Joueur 2 :")
+def J2GridGenerator() :
+    Grille2Mots = []
+    i = 0
+    while i < 2:
+        Grille2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        i += 1
+    print(Grille2Mots)
+J2GridGenerator()
 
-Liaisons = ["et ","car ","en d'autres termes ","par ailleurs ","sans compter que ","mais ", "où ","donc ","or "]
+truc = input("Joueur 1 souhaitez-vous rafraîchir votre liste ?")
 
-FinDePhrase = ["Et tout le monde le sait ! ","Et bim ! ","Tu peux pas le nier "]
-# Grille10Mot: On a différente liste 
-# ListePersoJ1: 2 mots parmis au dessus
-# ListePersoJ2: 2 mots parmis au dessus
-# PhraseJ1 = []
+if truc == "Oui" or truc == "oui":
+    print("Nouvelle liste Joueur 1 :")
+    J1GridGenerator()
 
-# PhraseComplète = []
-# Grille10Mots = random.choice(Sujet) + random.choice(Verbe) + random.choice(Complement) + random.choice(Liaisons) + random.choice(FinDePhrase)
-# print(Grille10Mots)
+truc2 = input("Joueur 2 souhaitez-vous rafraîchir votre liste ?")
+
+if truc2 == "Oui" or truc2 == "oui":
+    print("Nouvelle liste Joueur 2 :")
+    J2GridGenerator()
+
+# Choix de mot
 # input("Votre mère")
 # print("La phrase du joueur 1 est composée de" PhraseJ1 )
 
