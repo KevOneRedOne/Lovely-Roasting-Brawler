@@ -1,47 +1,48 @@
 import random
 from listedemots import List1,List2,List3,List4,List5
 
-print("Grille Principale :")
-def MainGridGenerator() :
-    Grille10Mots = []
+print("Liste Principale :")
+def MainListGenerator() :
+    Liste10Mots = []
     i = 0
     while i < 10:
-        Grille10Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        Liste10Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
         i += 1
-    print(Grille10Mots)
-MainGridGenerator()
+    print(Liste10Mots)
+MainListGenerator()
 
-print("Grille Joueur 1 :")
-def J1GridGenerator() :
-    Grille2Mots = []
+print("Liste Joueur 1 :")
+def J1ListGenerator() :
+    Liste2Mots = []
     i = 0
     while i < 2:
-        Grille2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        Liste2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
         i += 1
-    print(Grille2Mots)
-J1GridGenerator()
+    print(Liste2Mots)
+J1ListGenerator()
 
-print("Grille Joueur 2 :")
-def J2GridGenerator() :
-    Grille2Mots = []
+print("Liste Joueur 2 :")
+def J2ListGenerator() :
+    Liste2Mots = []
     i = 0
     while i < 2:
-        Grille2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
+        Liste2Mots.append(random.choice(List1 + List2 + List3 + List4 + List5))
         i += 1
-    print(Grille2Mots)
-J2GridGenerator()
+    print(Liste2Mots)
+J2ListGenerator()
 
 truc = input("Joueur 1 souhaitez-vous rafraîchir votre liste ?")
 
 if truc == "Oui" or truc == "oui":
     print("Nouvelle liste Joueur 1 :")
-    J1GridGenerator()
+    J1ListGenerator()
 
 truc2 = input("Joueur 2 souhaitez-vous rafraîchir votre liste ?")
 
 if truc2 == "Oui" or truc2 == "oui":
     print("Nouvelle liste Joueur 2 :")
-    J2GridGenerator()
+    J2ListGenerator()
+
 
 # Choix de mot
 # input("Votre mère")
@@ -50,3 +51,6 @@ if truc2 == "Oui" or truc2 == "oui":
 # OptionFinir
 # OptionResetListePerso = Tasse de thé
 # Si le joueur sélectionne Option Finir qu'il aura parmi ses choix de mots
+# Alterner les tours entre les joueurs
+# Score des phrases en fonction de leur longueur
+# Sélectionner un personnage

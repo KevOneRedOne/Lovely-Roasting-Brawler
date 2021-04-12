@@ -23,7 +23,7 @@ class Characters:
             self.faiblesse = []
         elif name == "Martha":
             self.name = "Martha"
-            self.adjective = "Championne UFC"
+            self.adjective = "La championne UFC !"
             self.health = 100 
             self.faiblesse = []
         elif name == "Agnès":

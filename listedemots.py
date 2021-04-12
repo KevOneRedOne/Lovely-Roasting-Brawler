@@ -242,6 +242,7 @@ List5 = [
     "Comme un paysan répugnant !",
     "Maintenant met une chaussette par dessus !",
     "Clin d'oeil clin d'oeil !",
+    "Va-t'en ou je te narguerai une seconde fois!",
     "Oh mon dieu, qui écrit ces trucs là !",
     "Ou bien est-ce à cause de ma façon de parler !",
     "Pardonne mon franglais !",
@@ -251,7 +252,8 @@ List5 = [
     "Ce qui me donne des courbatures !",
     "Ce qui pourrait causer la mort !",
     "Ce qui te fera mourrir ou te rendra fou !",
-    "Sale fils/fille d'ébèniste !",
+    "Fils/fille d'étalagiste !",
+    "Fils/fille d'imbécile !",
     "Espèce de mauviette !",
     "Sale paysan !",
     "Pauvre mortel !",
@@ -271,8 +273,4 @@ List5 = [
     "Vieux schnock !",
     "Espèce d'avorton !",
 ]
-
-
-
-
 
