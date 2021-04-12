@@ -82,7 +82,7 @@ List2 = [
     "Est parti ",
     "A lavé ",
     "était ",
-    "sont "
+    "sont ",
     "est appeuré par mon petit pistolet ",
     "est un vieux bougre ",
     "est un organe dans ton abdomen ",
