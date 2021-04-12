@@ -235,7 +235,7 @@ List5 = [
     "Et tu ne peux pas le nier !",
     "Et tu sais que c'est vrai !",
     "Parce que je n'existe pas !"
-    "Parce que tu est pourri gâté !",
+    "Parce que tu est un pourri gâté !",
     "Gros mythomane !",
     "Je parie !",
     "N'est-ce pas ?!",
