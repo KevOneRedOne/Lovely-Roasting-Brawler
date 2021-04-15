@@ -30,7 +30,7 @@ class Characters:
             "Vieux schnock !"]
         elif name == "Jean-Michel":
             self.name = "Jean-Michel"
-            self.adjective = "Se croit être le meilleur du monde"
+            self.adjective = "Possède un égo surdimensionné"
             self.health = 100
             self.faiblesse = ["Un blazer par cher ",
             "Un malotru ",

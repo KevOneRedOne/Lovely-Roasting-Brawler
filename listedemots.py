@@ -272,5 +272,8 @@ List5 = [
     "Imbécile !",
     "Vieux schnock !",
     "Espèce d'avorton !",
+    "J'espère que tu marcheras sur des legos !",
+    "J'espère que ta maison Minecraft sera détruite par un creeper"
+
 ]
 
