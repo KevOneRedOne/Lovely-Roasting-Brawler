@@ -93,8 +93,6 @@ def RefreshListJoueur1():
     if refresh == "Oui" or refresh == "oui":
         J1Liste2Mots.clear()
         J1ListGenerator()
-    elif refresh == "Non" or refresh == "non":
-        print("Ok")
 
 
 def RefreshListJoueur2():
@@ -103,8 +101,6 @@ def RefreshListJoueur2():
     if refresh == "Oui" or refresh == "oui":
         J2Liste2Mots.clear()
         J2ListGenerator()
-    elif refresh == "Non" or refresh == "non":
-        print("Ok")
 
 Phrase_J1 = []
 Phrase_J2 = []
