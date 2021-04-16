@@ -19,3 +19,7 @@ A la fin, c'est le joueur avec la phrase la plus complète qui remporte la parti
 ![image](/img/ProjetPython.png)
 
 
+
+### Répartition du travail 
+
+Nous avons entièrement réaliser ce projet en utilisant l'extension _**LiveShare**_ de Visual Studio Code et en distanciel.
