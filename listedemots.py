@@ -1,4 +1,4 @@
-List1 = [
+Liste1 = [
     "Mon chien",
     "Votre mère",
     "Mes chaussettes",
@@ -41,7 +41,7 @@ List1 = [
     "Un hamster",
     "Un petit lapin excité",
     "Un vieux croûton paresseux",
-    "Un bûcheron ",
+    "Un bûcheron",
     "Un bouffon",
     "Un poisson pané",
     "Un ornithorynque",
@@ -78,7 +78,7 @@ List1 = [
     "La vodka",
 ]
 
-List2 = [
+Liste2 = [
     "Est parti",
     "A lavé",
     "était",
@@ -169,7 +169,7 @@ List2 = [
     "est aussi salé qu'un joueur de League Of Legends",
 ]
 
-List3 = [
+Liste3 = [
     "Ce soir",
     "à l'école",
     "La semaine dernière",
@@ -203,7 +203,7 @@ List3 = [
     "va éventrer",
 ]
 
-List4 = [
+Liste4 = [
     "car",
     "en d'autres termes",
     "par ailleurs",
@@ -218,7 +218,7 @@ List4 = [
     "or",
 ]
 
-List5 = [
+Liste5 = [
     "Non d'un ravioli !",
     "Mon pote/chéri !",
     "Monsieur/Madame !",
@@ -273,7 +273,6 @@ List5 = [
     "Vieux schnock !",
     "Espèce d'avorton !",
     "J'espère que tu marcheras sur des legos !",
-    "J'espère que ta maison Minecraft sera détruite par un creeper"
-
+    "J'espère que ta maison Minecraft sera détruite par un creeper",
 ]
 

@@ -1,8 +1,9 @@
-def Coherence(point, phrase):
-    # Doit contenir au moins un sujet et un verbe pour que la phrase soit correcte
-    return point
+# En développement
+# def Coherence(point, phrase):
+#     # Doit contenir au moins un sujet et un verbe pour que la phrase soit correcte
+#     return point
 
-
+# Fonction qui affiche le score à la fin de la partie
 def ScoreTotal(phrase, faiblesse):
     point = 0
     for elem in phrase:
@@ -10,7 +11,4 @@ def ScoreTotal(phrase, faiblesse):
         for faib in faiblesse:
             if faib == elem:
                 point += 2
-
-    point += Coherence(point, phrase) 
-
     return point

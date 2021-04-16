@@ -1,8 +1,7 @@
-from generator import *
+from generateur import *
 import os
-from characters import Characters
+from personnages import Personnages
 from listedemots import *
-# from time import sleep
 from score import *
 
 print("Bienvenue dans notre jeu => Lovely-Roasting-Brawler !")
@@ -12,13 +11,13 @@ print("Que l'insulte gentille soit avec vous !")
 print()
 
 #------------------------------------- Choix du personnage----------------------------------------------------------------------------
-personnage_1 = Characters("Bryan")
-personnage_2 = Characters("Francis")
-personnage_3 = Characters("Jean-Michel")
-personnage_4 = Characters("Martha")
-personnage_5 = Characters("Agnès")
+personnage_1 = Personnages("Bryan")
+personnage_2 = Personnages("Francis")
+personnage_3 = Personnages("Jean-Michel")
+personnage_4 = Personnages("Martha")
+personnage_5 = Personnages("Agnès")
 
-perso_random = ["Bryan", "Francis", "Jean-Michel", "Martha", "Agnès"]
+perso_aleatoire = ["Bryan", "Francis", "Jean-Michel", "Martha", "Agnès"]
 
 print(personnage_1)
 print(personnage_2)
@@ -26,42 +25,37 @@ print(personnage_3)
 print(personnage_4)
 print(personnage_5)
 print()
-#---Choix du personnage, si le joueur se trompe plus de 5 fois------------------------------------------------------------------------------------------------ 
+
+#---------------------Choix du personnage, si le joueur se trompe plus de 5 fois------------------------------------------------------------------------------
 #-----------------------Il obtient un personnage aléatoire---------------------------------------------------------------------------------------------------- 
 
 # dictionnaire python
-Players = {}
+Joueurs = {}
 
-def newPlayer(PlayerName):
-    choice = input(PlayerName + " Entrez le prénom du personnage que vous avez choisi : ")
-    count_error = 0
+def Nouveau_Joueur(Nom_Joueur):
+    choix = input(Nom_Joueur + " Entrez le prénom du personnage que vous avez choisi : ")
+    nombre_erreurs = 0
 
-    while count_error <= 5:
-        for characterName in perso_random:
-            if choice == characterName:
-                Players[PlayerName] = Characters(choice)
-                return Players
+    while nombre_erreurs <= 5:
+        for Nom_personnage in perso_aleatoire:
+            if choix == Nom_personnage:
+                Joueurs[Nom_Joueur] = Personnages(choix)
+                return Joueurs
         
-        choice = input("Veuillez recommencer s'il vous plait : ")
-        count_error += 1
-        if count_error == 2:
+        choix = input("Veuillez recommencer s'il vous plait : ")
+        nombre_erreurs += 1
+        if nombre_erreurs == 2:
             print("Attention, au bout de 5 erreurs vous aurez un personnage aléatoire !")
-        elif count_error == 4 :
+        elif nombre_erreurs == 4 :
             print("Dernière chance, sinon vous aurez un personnage aléatoire...")
-        elif count_error == 5 : 
-            Players[PlayerName] = Characters(random.choice(perso_random))
-            print(PlayerName, "par défaut vous êtes :", Players.get(PlayerName).name)
-            return Players
+        elif nombre_erreurs == 5 : 
+            Joueurs[Nom_Joueur] = Personnages(random.choice(perso_aleatoire))
+            print(Nom_Joueur, "par défaut vous êtes :", Joueurs.get(Nom_Joueur).nom)
+            return Joueurs
             
-Players = newPlayer("Joueur 1")
-# print() le nom du personnage choisi
-# os.system('cls')
+Joueurs = Nouveau_Joueur("Joueur 1")
 
-Players = newPlayer("Joueur 2")
-
-# time.sleep(60) # Met en pause le code pendant 60 secondes (1 minutes)
-
-# os.system('cls')
+Joueurs = Nouveau_Joueur("Joueur 2")
 
 
 #------------------------------------------------------------------------------------------------------------------------------------
@@ -70,98 +64,154 @@ Players = newPlayer("Joueur 2")
 #------------------------------------------------------------------------------------------------------------------------------------
 
 # Fonction qui retire les mots des listes en fonction des mots choisis.
-def Remove_WordChosen():
-    AddtoPhrase = input("Veuillez choisir un mot :")
-    for mot in Liste10Mots :
-        if mot == AddtoPhrase :
-            Liste10Mots.remove(mot)
-    for mot in J1Liste2Mots:
-        if mot == AddtoPhrase:
-            J1Liste2Mots.remove(mot)
-    for mot in J2Liste2Mots:
-        if mot == AddtoPhrase:
-            J2Liste2Mots.remove(mot)
-    if mot != AddtoPhrase :
-        while mot != Liste10Mots or mot != J1Liste2Mots or mot != J2Liste2Mots :
-            AddtoPhrase = input("Veuillez entrer un mot contenu dans l'une des deux listes svp :")
+def Retirer_Mot_Choisit(AddtoPhrase, joueur):
+    for elem in Liste_10_Mots:
+        if elem == AddtoPhrase:
+            Liste_10_Mots.remove(elem)
+            if joueur == "Joueur 1":
+                Phrase_J1.append(AddtoPhrase)
+            else:
+                Phrase_J2.append(AddtoPhrase)
+            return False
+    
+    if joueur == "Joueur 1":
+        for elem in Liste_2_Mots_J1:
+            if elem == AddtoPhrase:
+                Liste_2_Mots_J1.remove(elem)
+                Phrase_J1.append(AddtoPhrase)
+                return False
+    else:
+        for elem in Liste_2_Mots_J2:
+            if elem == AddtoPhrase:
+                Liste_2_Mots_J2.remove(elem)
+                Phrase_J2.append(AddtoPhrase)
+                return False
 
-# Fonctions qui vont rafraîchir les listes des deux joueurs
-def RefreshListJoueur1():
-    refresh = input("Souhaitez-vous rafraîchir votre phrase. Oui ou Non ?").lower()
-    if refresh == "oui" or refresh == " oui":
-        J1Liste2Mots.clear()
-        J1ListGenerator()
-        print(J1Liste2Mots)
+    return True
+    
+# Fonctions qui vont Reinitialiser les listes individuelles des deux joueurs
+def ReinitialiseListeJoueur1():
+    reinitialisateur = input("Souhaitez-vous rafraîchir votre phrase. Oui ou Non ?").lower()
+    if reinitialisateur == "oui" or reinitialisateur == " oui":
+        Liste_2_Mots_J1.clear()
+        Generateur_Liste_Joueur_1()
+        print(Liste_2_Mots_J1)
 
-def RefreshListJoueur2():
-    refresh = input("Souhaitez-vous rafraîchir votre phrase. Oui ou Non ?").lower()
-    if refresh == "oui" or refresh == " oui":
-        J2Liste2Mots.clear()
-        J2ListGenerator()
+def ReinitialiseListeJoueur2():
+    reinitialisateur = input("Souhaitez-vous rafraîchir votre phrase. Oui ou Non ?").lower()
+    if reinitialisateur == "oui" or reinitialisateur == " oui":
+        Liste_2_Mots_J2.clear()
+        Generateur_Liste_Joueur_2()
         print()
-        print(J2Liste2Mots)
+        print(Liste_2_Mots_J2)
 
+
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+
+# Création des variables importantes pour le déroulement du jeu
 Phrase_J1 = []
 Phrase_J2 = []
 finJ1 = False
 finJ2 = False
 nombre_de_tour = 1
-game = True
+jeu = True
 
-def gameEnd():
+# Regarde si les deux joueurs ont fini de completer leur phrase
+def Fin_Jeu():
     if finJ1 and finJ2:
         return False
     else:
         return True
 
-MainListGenerator()
-J1ListGenerator()
-J2ListGenerator()
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+# Utilisation des fonctions générateurs pour pouvoir créer les listes et donc démarrer la partie
+Generateur_Liste_Principale()
+Generateur_Liste_Joueur_1()
+Generateur_Liste_Joueur_2()
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
 
-while (game):
+# Déroulement de la partie dans une boucle while, les deux joueurs jouent a la suite. Une fois un tour terminé les deux joueurs peuvent reprendre un mot jusqu'a la fin du jeu
+while (jeu):
     print("Tour", nombre_de_tour)
     print()
-    for joueur in Players:
+    for joueur in Joueurs:
         if joueur == "Joueur 1" and not finJ1:
             print("Au", joueur, "de jouer")
             print()
             print("Vous avez le choix entre : ") 
-            print(Liste10Mots)
+            print(Liste_10_Mots)
             print()
-            print("Votre liste actuelle", J1Liste2Mots)
+            print("Votre liste personnelle :",Liste_2_Mots_J1)
             print()
-            RefreshListJoueur1()
+            ReinitialiseListeJoueur1()
             print()
-            print("Votre phrase actuelle", " ".join(Phrase_J1))
-            # AddtoPhrase = input("Veuillez choisir un mot :")
-            print()
-            Remove_WordChosen()
-            Phrase_J1.append(AddtoPhrase)
-            print("Votre phrase actuelle", " ".join(Phrase_J1))
+            print("Votre phrase actuelle :", " ".join(Phrase_J1))
+            AddtoPhrase = input("Veuillez choisir un mot :")
+            print()            
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+#------ Condition pour verifier si le joueur a bien choisi un mot existant dans les listes de mots.
+            nombre_erreurs_liste = 0
+
+            while Retirer_Mot_Choisit(AddtoPhrase, joueur):
+                nombre_erreurs_liste += 1
+                AddtoPhrase = input("Votre mot n'est pas dans la liste, recommencez :")
+                if nombre_erreurs_liste == 2 :
+                    print ("Attention, vous ne disposez plus que 1 essaie.")
+                elif nombre_erreurs_liste == 3 :
+                    print("Pour ce tour, vous n'avez pas selectionné de mots. Tant pis !")
+                    break
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------    
+            print("Votre phrase actuelle :", " ".join(Phrase_J1))
             print()
             print("Voulez-vous totalement finir votre phrase ? (Oui ou Non)")
             print("Si vous finissez totalement votre phrase vous ne jouerez plus avant la fin de la partie")
+
+            # Condition pour stopper le tour du joueur 1 quand il a complété sa phrase.
             stop = input().lower()
             if stop == "oui" or stop == " oui":
                 finJ1 = True
+
         elif joueur == "Joueur 2" and not finJ2:
             print("Au", joueur, "de jouer")
             print()
             print("Vous avez le choix entre : ") 
-            print(Liste10Mots)
-            print("Votre liste actuelle", J2Liste2Mots)
+            print(Liste_10_Mots)
+            print("Votre liste personnelle :",Liste_2_Mots_J2)
             print()
-            RefreshListJoueur2()
+            ReinitialiseListeJoueur2()
             print()
-            print("Votre phrase actuelle", )
-            # AddtoPhrase = input("Veuillez choisir un mot :")
-            Remove_WordChosen()
-            Phrase_J2.append(AddtoPhrase)
+            print("Votre phrase actuelle :"," ".join(Phrase_J2))
+            AddtoPhrase = input("Veuillez choisir un mot :")
             print()
-            print("Votre phrase actuelle", " ".join(Phrase_J2))
+
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+# Condition pour verifier si le joueur a bien choisi un mot existant dans les listes de mots.
+            nombre_erreurs_liste = 0
+
+            while Retirer_Mot_Choisit(AddtoPhrase, joueur):
+                nombre_erreurs_liste += 1
+                AddtoPhrase = input("Votre mot n'est pas dans la liste, recommencez :")
+                if nombre_erreurs_liste == 2 :
+                    print ("Attention, vous ne disposez plus que 1 essaie.")
+                elif nombre_erreurs_liste == 3 :
+                    print("Pour ce tour, vous n'avez pas selectionné de mots. Tant pis !")
+                    break
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+            print()
+            print("Votre phrase actuelle :", " ".join(Phrase_J2))
             print()
             print("Voulez-vous totalement finir votre phrase ? (Oui ou Non)")
             print("Si vous finissez totalement votre phrase vous ne jouerez plus avant la fin de la partie")
+            # Condition pour stopper le tour du joueur 2 quand il a complété sa phrase.
             stop = input().lower()
             if stop == "oui" or stop == " oui":
                 finJ2 = True
@@ -170,17 +220,24 @@ while (game):
     if nombre_de_tour == 11:
         break
     else:
-        game = gameEnd()
+        jeu = Fin_Jeu()
 
-# Fin du jeu ici
-print("jeu fini")
+#------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------Fin du jeu ici-----------------------------------------------------------------------------
+print("Fin de la partie !")
 
-print("La phrase du joueur 1 est ", " ".join(Phrase_J1))
-print("La phrase du joueur 2 est", " ".join(Phrase_J2))
+print("La phrase du joueur 1 est :", " ".join(Phrase_J1))
+print("La phrase du joueur 2 est :", " ".join(Phrase_J2))
 
-score1 = print("Score du joueur 1 :", ScoreTotal(Phrase_J1, Players.get("Joueur 2").faiblesse))
-score2 = print("Score du joueur 2 :", ScoreTotal(Phrase_J2, Players.get("Joueur 1").faiblesse))
+score1 = ScoreTotal(Phrase_J1, Joueurs.get("Joueur 2").faiblesse)
+score2 = ScoreTotal(Phrase_J2, Joueurs.get("Joueur 1").faiblesse)
+
+print("Score du joueur 1 :", score1)
+print("Score du joueur 2 :", score2)
 if score1 > score2:
     print("Joueur 1 a gagné !")
+elif score1 == score2:
+    print("Egalité des deux joueurs")
 else:
     print("Joueur 2 a gagné !")
