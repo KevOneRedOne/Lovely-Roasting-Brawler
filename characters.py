@@ -68,4 +68,4 @@ class Characters:
             "Maintenant met une chaussette par dessus !"]
 
     def __str___(self):
-        return "Le personnage s'appelle" + self.name + self.adjective 
+        return "Le personnage s'appelle" + self.name + self.adjective

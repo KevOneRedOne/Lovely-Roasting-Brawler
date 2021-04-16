@@ -1,13 +1,9 @@
 from generator import *
 from characters import Characters
 from listedemots import *
-
 print()
-print("Bienvenue dans notre jeu => Lovely-Roasting-Brawler !")
-print()
-print("Il s'agit d'un jeu de combat d'insultes entre deux joueurs ! Les règles ? Très simple.")
+print("Bienvenue dans notre jeu => Lovely-Roasting-Brawler !\nIl s'agit d'un jeu de combat d'insultes entre deux joueurs ! Les règles ? Très simple.")
 print("Vous devez, chacun votre tour, completer une insulte avec une liste de mot aléatoire ! Le but est donc de reussir la meilleure insulte !")
-print()
 print("Que l'insulte gentille soit avec vous !")
 print()
 
@@ -75,9 +71,9 @@ while (choice_2 != "Bryan" and choice_2 != "Martha" and choice_2 != "Francis" an
 
 # Fonction qui retire les mots des listes les mots choisis.
 def Remove_WordChosen():
-    for toto in Liste10Mots :
-        if toto == AddtoPhrase :
-            Liste10Mots.remove(toto)
+    for mot in Liste10Mots :
+        if mot == AddtoPhrase :
+            Liste10Mots.remove(mot)
             print(Liste10Mots)
     for mot in J1Liste2Mots:
         if mot == AddtoPhrase:
@@ -88,52 +84,59 @@ def Remove_WordChosen():
             J2Liste2Mots.remove(mot)
             print(J1Liste2Mots)
 
+
 def RefreshListJoueur1():
     refresh = input("Joueur 1, souhaitez-vous rafraîchir votre phrase. Oui ou Non ?")
-    if refresh == "Oui" or refresh == "oui":
+    if refresh == "Oui" or refresh == "oui" or refresh == " oui" or refresh == " Oui":
         J1Liste2Mots.clear()
         J1ListGenerator()
-
+        print(J1Liste2Mots)
 
 def RefreshListJoueur2():
-    refresh = ''
     refresh = input("Joueur 2, souhaitez-vous rafraîchir votre phrase. Oui ou Non ?")
-    if refresh == "Oui" or refresh == "oui":
+    if refresh == "Oui" or refresh == "oui" or refresh == " oui" or refresh == " Oui":
         J2Liste2Mots.clear()
         J2ListGenerator()
+        print()
+        print(J2Liste2Mots)
 
 Phrase_J1 = []
 Phrase_J2 = []
-cmpt = 0
-while cmpt < 20:
-    cmpt += 1
+nombre_de_tour = 0
+while nombre_de_tour <= 5:
+    nombre_de_tour += 1
     print("Tour ", cmpt)
-    if cmpt == 1:
+    if nombre_de_tour == 1:
         MainListGenerator()
         J1ListGenerator()
         J2ListGenerator()
+    print(Liste10Mots)
+    print()
     print("Joueur 1 à votre tour")
+    print()
     print("Votre liste actuelle",J1Liste2Mots)
     RefreshListJoueur1()
-    AddtoPhrase = input("Veuillez choisir un mot : ")
+    print()
+    AddtoPhrase = input("Veuillez choisir un mot :")
+    print()
     Remove_WordChosen()
     Phrase_J1.append(AddtoPhrase)
-    print(Phrase_J1)
-
+    print("Votre phrase actuelle",Phrase_J1)
+    print()
+    print(Liste10Mots)
+    print()
     print("Joueur 2 à votre tour")
+    print()
     print("Votre liste actuelle",J2Liste2Mots)
     RefreshListJoueur2()
-    AddtoPhrase = input("Veuillez choisir un mot : ")
+    print()
+    AddtoPhrase = input("Veuillez choisir un mot :")
     Remove_WordChosen()
     Phrase_J2.append(AddtoPhrase)
-    print(Phrase_J2)
+    print()
+    print("Votre phrase actuelle",Phrase_J2)
 
-
-        
-
-
-
-
+# Conditions pour éviter que les joueurs rentrent n'importe quoi
 # Une fonction qui permette de vérifier la cohérence de la phrase.
 # Si le joueur sélectionne Option Finir qu'il aura parmi ses choix de mots, balancer la phrase et les fonctions Score les calculent
 # Score des phrases en fonction de leur longueur
